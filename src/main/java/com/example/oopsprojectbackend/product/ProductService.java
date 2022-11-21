@@ -21,11 +21,13 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    public void addNewProduct(Product product) {
-        Optional<Product> productOptional =  productRepository.findProductById(product.getId());
-        if(productOptional.isPresent()){
-            throw new IllegalStateException("product exists");
+    public void addNewProducts(Product[] products) {
+        for(int i =0; i<products.length; i++) {
+            Optional<Product> productOptional = productRepository.findProductById(products[i].getId());
+            if (productOptional.isPresent()) {
+                throw new IllegalStateException("product exists");
+            }
+            productRepository.save(products[i]);
         }
-        productRepository.save(product);
     }
 }
