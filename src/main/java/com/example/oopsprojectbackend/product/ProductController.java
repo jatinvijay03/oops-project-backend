@@ -16,11 +16,13 @@ public class ProductController {
         this.productService = productService;
     }
 
+    @CrossOrigin
     @GetMapping
     public List<Product> getProducts(){
         return productService.getProducts();
     }
 
+    @CrossOrigin
     @PostMapping
     public void registerNewProduct(@RequestBody Product[] products) {
         productService.addNewProducts(products);
