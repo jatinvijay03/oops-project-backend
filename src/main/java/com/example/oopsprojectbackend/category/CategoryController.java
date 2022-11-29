@@ -16,13 +16,13 @@ public class CategoryController {
         this.categoryService = categoryService;
     }
 
-    @CrossOrigin
+    @CrossOrigin("http://localhost:3000/")
     @GetMapping
     public List<Category> getCategories(){
         return categoryService.getCategories();
     }
 
-    @CrossOrigin
+    @CrossOrigin("http://localhost:3000/")
     @PostMapping
     public void registerNewCategory(@RequestBody Category[] categories) {
         categoryService.addNewCategories(categories);

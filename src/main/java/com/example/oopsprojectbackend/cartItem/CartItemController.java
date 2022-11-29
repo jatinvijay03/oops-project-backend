@@ -9,20 +9,21 @@ import java.util.Optional;
 @RestController
 public class CartItemController {
 
-
-
     @Autowired
     private CartItemService cartItemService;
 
+    @CrossOrigin("http://localhost:3000/")
     @RequestMapping(path = "oops/api/cartItem")
     public List<CartItem> getCartItems(){return cartItemService.getCartItems();
     }
 
     @RequestMapping(path = "oops/api/cartItem/{uid}")
+    @CrossOrigin("http://localhost:3000/")
     public Optional<CartItem[]> getCartItemsForUser(@PathVariable Long uid){return cartItemService.getCartItemsForUser(uid);
     }
 
     @RequestMapping(path = "oops/api/cartItem", method = RequestMethod.POST)
+    @CrossOrigin("http://localhost:3000/")
     public void registerNewCartItem(@RequestBody CartItem[] cartItems) {
         cartItemService.addNewCartItems(cartItems);
     }

@@ -1,5 +1,6 @@
 package com.example.oopsprojectbackend.product;
 
+import com.example.oopsprojectbackend.cartItem.CartItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -19,6 +20,14 @@ public class ProductService {
 
     public List<Product> getProducts(){
         return productRepository.findAll();
+    }
+
+    public Optional<Product[]> getProductFromQuery(String query){
+        return productRepository.findProductsFromQuery(query);
+    }
+
+    public Optional<Product[]> getProductFromCategory(Long cat){
+        return productRepository.findProductsFromCategory(cat);
     }
 
     public void addNewProducts(Product[] products) {
