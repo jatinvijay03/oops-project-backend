@@ -32,6 +32,11 @@ public class ProductController {
     public Optional<Product[]> getProductFromCategory(@PathVariable Long cat){return productService.getProductFromCategory(cat);
     }
 
+    @RequestMapping(path = "oops/api/product/pid={pid}")
+    @CrossOrigin("http://localhost:3000/")
+    public Optional<Product> getProductFromPid(@PathVariable Long pid){return productService.getProductFromPid(pid);
+    }
+
     @RequestMapping(path = "oops/api/product", method = RequestMethod.POST)
     @CrossOrigin("http://localhost:3000/")
     public void registerNewProduct(@RequestBody Product[] products) {

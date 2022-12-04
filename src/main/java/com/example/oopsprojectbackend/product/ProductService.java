@@ -30,6 +30,10 @@ public class ProductService {
         return productRepository.findProductsFromCategory(cat);
     }
 
+    public Optional<Product> getProductFromPid(Long pid){
+        return productRepository.findProductById(pid);
+    }
+
     public void addNewProducts(Product[] products) {
         for(int i =0; i<products.length; i++) {
             Optional<Product> productOptional = productRepository.findProductById(products[i].getId());

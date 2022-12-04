@@ -3,6 +3,7 @@ package com.example.oopsprojectbackend.cartItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,14 +26,25 @@ public class CartItemService {
         return cartItemRepository.findCartItemsbyUid(uid);
     }
 
+    @Transactional
+    public void updateCartItem(Long id, Integer q){
+        CartItem cartItem = cartItemRepository.findCartItembyid(id).orElseThrow(() -> new IllegalStateException("doesn't exist"));
+        cartItem.setQuantity(q + 1);
+    }
+
+    @Transactional
     public void addNewCartItems(CartItem[] cartItems) {
         for(int i = 0; i< cartItems.length; i++) {
-            Optional<CartItem> categoryOptional = cartItemRepository.findCartItembyId(cartItems[i].getId());
-            if (categoryOptional.isPresent()) {
-                //it should ideally increase the quantity of the cart item
-                throw new IllegalStateException("cart item exists");
+            Optional<CartItem> cartItemOptional = cartItemRepository.findCartItembyIds(cartItems[i].getUid(), cartItems[i].getPid());
+            if (cartItemOptional.isPresent()) {
+                Long id = cartItemOptional.get().getId();
+                Integer q = cartItemOptional.get().getQuantity();
+                updateCartItem(id, q);
+                //throw new IllegalStateException("cart item exists");
             }
-            cartItemRepository.save(cartItems[i]);
+            else{
+                cartItemRepository.save(cartItems[i]);
+            }
         }
     }
 }
