@@ -1,5 +1,6 @@
 package com.example.oopsprojectbackend.user;
 
+import com.example.oopsprojectbackend.product.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,5 +34,11 @@ public class UserController {
     public Optional<User> login(@RequestBody User user) {
         Optional<User> usera = userService.login(user.getEmail(), user.getPassword());
         return usera;
+    }
+
+    @RequestMapping(path = "oops/api/user/delete", method = RequestMethod.DELETE)
+    @CrossOrigin("http://localhost:3000/")
+    public void deleteUsr(@RequestBody User user) {
+        userService.deleteUser(user.getId());
     }
 }

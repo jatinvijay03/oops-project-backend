@@ -42,5 +42,11 @@ public class ProductController {
     public void registerNewProduct(@RequestBody Product[] products) {
         productService.addNewProducts(products);
     }
+
+    @RequestMapping(path = "oops/api/product/delete", method = RequestMethod.DELETE)
+    @CrossOrigin("http://localhost:3000/")
+    public void deleteProduct(@RequestBody Product product) {
+        productService.deleteProduct(product.getId());
+    }
 }
 

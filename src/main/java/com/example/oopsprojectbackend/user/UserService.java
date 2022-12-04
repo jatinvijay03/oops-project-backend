@@ -47,4 +47,8 @@ public class UserService {
         user.get().setState("in");
         return user;
     }
+
+    public void deleteUser(Long id){
+        userRepository.deleteById(id);
+    }
 }

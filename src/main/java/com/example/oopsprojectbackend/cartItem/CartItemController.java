@@ -1,5 +1,6 @@
 package com.example.oopsprojectbackend.cartItem;
 
+import com.example.oopsprojectbackend.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,5 +27,11 @@ public class CartItemController {
     @CrossOrigin("http://localhost:3000/")
     public void registerNewCartItem(@RequestBody CartItem[] cartItems) {
         cartItemService.addNewCartItems(cartItems);
+    }
+
+    @RequestMapping(path = "oops/api/cartItem/delete", method = RequestMethod.DELETE)
+    @CrossOrigin("http://localhost:3000/")
+    public void deleteCartItem(@RequestBody CartItem item) {
+        cartItemService.deleteCartItem(item.getId());
     }
 }
