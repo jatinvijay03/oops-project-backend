@@ -23,22 +23,26 @@ public class Order {
 
      private LocalDate orderDate;
 
+     private String address;
+
     public Order() {
     }
 
-    public Order(Long id, Long uid, Long pid, Integer quantity, LocalDate orderDate) {
+    public Order(Long id, Long uid, Long pid, Integer quantity, LocalDate orderDate, String address) {
         this.id = id;
         this.uid = uid;
         this.pid = pid;
         this.quantity = quantity;
         this.orderDate = orderDate;
+        this.address = address;
     }
 
-    public Order(Long uid, Long pid, Integer quantity, LocalDate orderDate) {
+    public Order(Long uid, Long pid, Integer quantity, LocalDate orderDate, String address) {
         this.uid = uid;
         this.pid = pid;
         this.quantity = quantity;
         this.orderDate = orderDate;
+        this.address = address;
     }
 
     public Long getId() {
@@ -81,6 +85,14 @@ public class Order {
         this.orderDate = date;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     @Override
     public String toString() {
         return "CartItem{" +
@@ -89,6 +101,7 @@ public class Order {
                 "pid=" + pid +
                 "quantity=" + quantity +
                 "orderDate" + orderDate +
+                "address" + address +
                 '}';
     }
 }
