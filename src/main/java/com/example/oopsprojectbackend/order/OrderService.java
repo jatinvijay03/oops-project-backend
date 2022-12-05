@@ -28,7 +28,7 @@ public class OrderService {
     }
 
 
-    public String addNewOrders(Order[] orders) {
+    public void addNewOrders(Order[] orders) {
         for(int i = 0; i< orders.length; i++) {
             Optional<Order> orderOptional = orderRepository.findOrderbyId(orders[i].getId());
             if (orderOptional.isPresent()) {
@@ -36,9 +36,7 @@ public class OrderService {
             }
             else{
                 orderRepository.save(orders[i]);
-                return "ordered";
             }
         }
-        return "";
     }
 }
