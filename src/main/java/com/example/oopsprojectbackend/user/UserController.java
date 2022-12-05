@@ -23,10 +23,16 @@ public class UserController {
         return userService.getUsers();
     }
 
+    @RequestMapping(path = "oops/api/user/{uid}")
+    @CrossOrigin("http://localhost:3000/")
+    public Optional<User> getUserFromId(@PathVariable Long uid){return userService.getUserbyId(uid);
+    }
+
     @RequestMapping(path = "oops/api/user", method = RequestMethod.POST)
     @CrossOrigin("http://localhost:3000/")
-    public void registerNewUser(@RequestBody User user) {
-        userService.addNewUser(user);
+    public User registerNewUser(@RequestBody User user) {
+        User usera = userService.addNewUser(user);
+        return usera;
     }
 
     @RequestMapping(path = "oops/api/user/login", method = RequestMethod.POST)

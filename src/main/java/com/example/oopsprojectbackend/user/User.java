@@ -18,22 +18,22 @@ public class User {
      private Long id;
      private String email;
      private String password;
-     private String state;
+     private String address;
 
     public User() {
     }
 
-    public User(Long id, String email, String password, String state) {
+    public User(Long id, String email, String password, String address) {
         this.id = id;
         this.email = email;
         this.password = password;
-        this.state = state;
+        this.address = address;
     }
 
-    public User(String email, String password, String state) {
+    public User(String email, String password, String address) {
         this.email = email;
         this.password = password;
-        this.state = state;
+        this.address = address;
     }
 
     public Long getId() {
@@ -60,12 +60,12 @@ public class User {
         this.password = password;
     }
 
-    public String getState() {
-        return state;
+    public String getAddress() {
+        return address;
     }
 
-    public void setState(String state) {
-        this.state = state;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     @Override
@@ -74,7 +74,7 @@ public class User {
                 "id=" + id +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", state=" + state + '\'' +
+                ", address=" + address + '\'' +
                 '}';
     }
 }

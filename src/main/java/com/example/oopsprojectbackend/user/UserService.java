@@ -27,7 +27,7 @@ public class UserService {
         return userRepository.findUserById(id);
     }
 
-    public Optional<User> addNewUser(User user) {
+    public User addNewUser(User user) {
             Optional<User> userOptional = userRepository.findUserById(user.getId());
             Optional<User> userOptional1 = userRepository.findUserByEmail(user.getEmail());
             if (userOptional.isPresent()) {
@@ -38,13 +38,12 @@ public class UserService {
             }
             userRepository.save(user);
             Optional <User> u = login(user.getEmail(), user.getPassword());
-            return u;
+            return user;
     }
 
     @Transactional
     public Optional<User> login(String email, String password){
         Optional<User> user = userRepository.checkIfExists(email, password);
-        user.get().setState("in");
         return user;
     }
 

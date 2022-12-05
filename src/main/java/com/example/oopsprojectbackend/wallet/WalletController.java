@@ -35,4 +35,11 @@ public class WalletController {
         Optional<Wallet> walleta = walletService.topup(wallet.getUid(), wallet.getPin(), wallet.getAmount());
         return walleta;
     }
+
+    @RequestMapping(path = "oops/api/wallet/update", method = RequestMethod.POST)
+    @CrossOrigin("http://localhost:3000/")
+    public Optional<Wallet> update(@RequestBody Wallet wallet) {
+        Optional<Wallet> walleta = walletService.update(wallet.getUid(), wallet.getAmount());
+        return walleta;
+    }
 }
