@@ -56,6 +56,7 @@ public class WalletService {
         walletRepository.save(wallet);
     }
 
+    @Transactional
     public void deleteWallet(Long uid){
         walletRepository.deleteByUid(uid);
     }

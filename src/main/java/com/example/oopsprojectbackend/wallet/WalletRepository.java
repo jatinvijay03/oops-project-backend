@@ -15,6 +15,6 @@ public interface WalletRepository extends JpaRepository<Wallet, Long> {
     @Query("SELECT w FROM Wallet w WHERE w.uid = ?1 AND w.pin = ?2")
     Optional<Wallet> checkIfExists(Long uid, String pin);
 
-    Optional<Wallet> deleteByUid(Long uid);
+    long deleteByUid(Long uid);
 
 }
