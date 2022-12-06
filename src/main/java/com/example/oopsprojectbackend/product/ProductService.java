@@ -23,11 +23,11 @@ public class ProductService {
     }
 
     public Optional<Product[]> getProductFromQuery(String query){
-        return productRepository.findProductsFromQuery(query);
+        return productRepository.findProductsFromQuery(query, "true");
     }
 
     public Optional<Product[]> getProductFromCategory(Long cat){
-        return productRepository.findProductsFromCategory(cat);
+        return productRepository.findProductsFromCategory(cat, "true");
     }
 
     public Optional<Product> getProductFromPid(Long pid){

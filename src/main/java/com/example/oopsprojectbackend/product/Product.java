@@ -45,6 +45,7 @@ public class Product {
         this.image = image;
         this.price = price;
         this.category_id = category_id;
+        this.showstatus = showstatus;
     }
 
     public Long getId() {

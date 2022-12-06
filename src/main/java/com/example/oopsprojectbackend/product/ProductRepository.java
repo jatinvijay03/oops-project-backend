@@ -13,14 +13,14 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     @Query("SELECT p FROM Product p WHERE p.id = ?1")
     Optional<Product> findProductById(Long id);
 
-    @Query("SELECT p FROM Product p WHERE p.category_id = ?1")
-    Optional<Product[]> findProductsFromCategory(Long cid);
+    @Query("SELECT p FROM Product p WHERE p.category_id = ?1 AND p.showstatus = ?2")
+    Optional<Product[]> findProductsFromCategory(Long cid, String st);
 
     @Query("SELECT p FROM Product p WHERE p.showstatus = ?1")
     Optional<Product[]> findProductsToShow(String st);
 
-    @Query(value = "SELECT * FROM Product p WHERE SIMILARITY(p.name,?1) > 0.1 ORDER BY SIMILARITY(p.name,?1) DESC LIMIT 10", nativeQuery = true)
-    Optional<Product[]> findProductsFromQuery(String query);
+    @Query(value = "SELECT * FROM Product p WHERE SIMILARITY(p.name,?1) > 0.1 AND p.showstatus = ?2 ORDER BY SIMILARITY(p.name,?1) DESC LIMIT 10", nativeQuery = true)
+    Optional<Product[]> findProductsFromQuery(String query, String st);
 
 
 }
