@@ -1,6 +1,7 @@
 package com.example.oopsprojectbackend.order;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -20,7 +21,7 @@ public class OrderController {
 
     @RequestMapping(path = "oops/api/order/{date}")
     @CrossOrigin("http://localhost:3000/")
-    public Optional<Order[]> getOrdersForDate(@PathVariable LocalDate date){return orderService.getOrdersForDate(date);
+    public Optional<Order[]> getOrdersForDate(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date){return orderService.getOrdersForDate(date);
     }
 
     @RequestMapping(path = "oops/api/order/user={uid}")
