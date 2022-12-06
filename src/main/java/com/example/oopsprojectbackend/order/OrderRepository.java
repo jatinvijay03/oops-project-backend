@@ -1,7 +1,5 @@
 package com.example.oopsprojectbackend.order;
 
-import com.example.oopsprojectbackend.category.Category;
-import com.example.oopsprojectbackend.product.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -16,5 +14,6 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
 
     Optional<Order[]> findByOrderDate(LocalDate date);
 
+    @Query(value = "SELECT o FROM Order o WHERE o.uid = ?1 ORDER BY o.date DESC", nativeQuery = true)
     Optional<Order[]> findByUid(Long uid);
 }

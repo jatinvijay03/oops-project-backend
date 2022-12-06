@@ -47,6 +47,12 @@ public class UserService {
         return user;
     }
 
+    @Transactional
+    public void updatePassword(Long uid, String pass, String newpass){
+        User usera = userRepository.checkIfExistsUid(uid,pass).orElseThrow(() -> new IllegalStateException("doesn't exist"));
+        usera.setPassword(newpass);
+    }
+
     public void deleteUser(Long id){
         userRepository.deleteById(id);
     }

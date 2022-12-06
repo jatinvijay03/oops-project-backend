@@ -42,4 +42,10 @@ public class WalletController {
         Optional<Wallet> walleta = walletService.update(wallet.getUid(), wallet.getAmount());
         return walleta;
     }
+
+    @RequestMapping(path = "oops/api/wallet/delete", method = RequestMethod.DELETE)
+    @CrossOrigin("http://localhost:3000/")
+    public void deleteWallet(@RequestBody Wallet wallet) {
+        walletService.deleteWallet(wallet.getUid());
+    }
 }

@@ -1,5 +1,6 @@
 package com.example.oopsprojectbackend.user;
 
+import com.example.oopsprojectbackend.cartItem.CartItem;
 import com.example.oopsprojectbackend.product.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -46,5 +47,11 @@ public class UserController {
     @CrossOrigin("http://localhost:3000/")
     public void deleteUsr(@RequestBody User user) {
         userService.deleteUser(user.getId());
+    }
+
+    @RequestMapping(path = "oops/api/user/changePass", method = RequestMethod.POST)
+    @CrossOrigin("http://localhost:3000/")
+    public void registerNewCartItem(@RequestBody UserPassUpdate userpu) {
+        userService.updatePassword(userpu.getUid(), userpu.getPassword(), userpu.getNewpass());
     }
 }
