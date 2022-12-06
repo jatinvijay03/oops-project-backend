@@ -31,6 +31,7 @@ public class RmService {
             rmRepository.save(rm);
     }
 
+    @Transactional
     public void deleteRm(Long uid){
         rmRepository.deleteByUid(uid);
     }

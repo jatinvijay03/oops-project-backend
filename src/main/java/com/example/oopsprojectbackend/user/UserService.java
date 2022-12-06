@@ -59,6 +59,7 @@ public class UserService {
         usera.setRole("manager");
     }
 
+    @Transactional
     public void deleteUser(Long id){
         userRepository.deleteById(id);
     }

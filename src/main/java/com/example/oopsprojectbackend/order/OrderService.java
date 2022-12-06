@@ -30,7 +30,6 @@ public class OrderService {
     public Optional<Order[]> getOrdersForUid(Long uid){
         return orderRepository.findByUid(uid);
     }
-
     public void addNewOrders(Order[] orders) {
         for(int i = 0; i< orders.length; i++) {
             Optional<Order> orderOptional = orderRepository.findOrderbyId(orders[i].getId());
