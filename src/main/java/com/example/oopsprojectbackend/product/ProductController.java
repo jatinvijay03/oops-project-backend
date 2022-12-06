@@ -19,7 +19,8 @@ public class ProductController {
 
     @RequestMapping(path = "oops/api/product")
     @CrossOrigin("http://localhost:3000/")
-    public List<Product> getProducts(){return productService.getProducts();
+    public Optional<Product[]> getProducts(){
+        return productService.getProducts();
     }
 
     @RequestMapping(path = "oops/api/product/q={query}")

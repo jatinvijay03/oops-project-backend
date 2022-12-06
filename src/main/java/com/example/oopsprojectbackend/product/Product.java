@@ -24,19 +24,22 @@ public class Product {
      private Integer price;
      private Long category_id;
 
+     private String showstatus;
+
     public Product() {
     }
 
-    public Product(Long id, String name, String description, String image, Integer price, Long category_id) {
+    public Product(Long id, String name, String description, String image, Integer price, Long category_id, String showstatus) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.image = image;
         this.price = price;
         this.category_id = category_id;
+        this.showstatus = showstatus;
     }
 
-    public Product(String name, String description, String image, Integer price, Long category_id) {
+    public Product(String name, String description, String image, Integer price, Long category_id, String showstatus) {
         this.name = name;
         this.description = description;
         this.image = image;
@@ -76,6 +79,14 @@ public class Product {
         this.image = image;
     }
 
+    public String getShowstatus() {
+        return showstatus;
+    }
+
+    public void setShowstatus(String showstatus) {
+        this.showstatus = showstatus;
+    }
+
     public Long getCategory_id() { return category_id; }
 
     public void setCategory_id(Long category_id) {this.category_id = category_id;}
@@ -95,6 +106,7 @@ public class Product {
                 ", image=" + image + '\'' +
                 ", category_id=" + category_id + '\'' +
                 ", price=" + price +
+                ", showstatus='" + showstatus + '\'' +
                 '}';
     }
 }

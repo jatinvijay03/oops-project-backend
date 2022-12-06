@@ -18,8 +18,8 @@ public class ProductService {
     }
 
 
-    public List<Product> getProducts(){
-        return productRepository.findAll();
+    public Optional<Product[]> getProducts(){
+        return productRepository.findProductsToShow("true");
     }
 
     public Optional<Product[]> getProductFromQuery(String query){
