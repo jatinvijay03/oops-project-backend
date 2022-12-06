@@ -53,6 +53,12 @@ public class UserService {
         usera.setPassword(newpass);
     }
 
+    @Transactional
+    public void makeManager(Long uid){
+        User usera = userRepository.findUserById(uid).orElseThrow(() -> new IllegalStateException("doesn't exist"));
+        usera.setRole("manager");
+    }
+
     public void deleteUser(Long id){
         userRepository.deleteById(id);
     }

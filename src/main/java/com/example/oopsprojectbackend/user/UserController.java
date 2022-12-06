@@ -54,4 +54,10 @@ public class UserController {
     public void registerNewCartItem(@RequestBody UserPassUpdate userpu) {
         userService.updatePassword(userpu.getUid(), userpu.getPassword(), userpu.getNewpass());
     }
+
+    @RequestMapping(path = "oops/api/user/setManager", method = RequestMethod.POST)
+    @CrossOrigin("http://localhost:3000/")
+    public void setManager(@RequestBody User usera) {
+        userService.makeManager(usera.getId());
+    }
 }
