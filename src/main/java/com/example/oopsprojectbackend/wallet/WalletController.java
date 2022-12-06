@@ -43,6 +43,13 @@ public class WalletController {
         return walleta;
     }
 
+    @RequestMapping(path = "oops/api/wallet/update/password", method = RequestMethod.POST)
+    @CrossOrigin("http://localhost:3000/")
+    public Optional<Wallet> updatePassword(@RequestBody Wallet wallet) {
+        Optional<Wallet> walleta = walletService.updatePassword(wallet.getUid(), wallet.getPin());
+        return walleta;
+    }
+
     @RequestMapping(path = "oops/api/wallet/delete", method = RequestMethod.DELETE)
     @CrossOrigin("http://localhost:3000/")
     public void deleteWallet(@RequestBody Wallet wallet) {

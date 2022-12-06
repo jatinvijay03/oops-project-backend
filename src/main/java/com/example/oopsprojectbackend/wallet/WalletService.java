@@ -48,6 +48,18 @@ public class WalletService {
         }
     }
 
+    @Transactional
+    public Optional<Wallet> updatePassword(Long uid, String password){
+        Optional<Wallet> wallet = walletRepository.findByUid(uid);
+        wallet.get().setPin(password);
+        if (wallet.isPresent()) {
+            return wallet;
+        }
+        else{
+            throw new IllegalStateException("wallet not found");
+        }
+    }
+
     public void addWallet(Wallet wallet) {
         Optional<Wallet> walleto = walletRepository.findByUid(wallet.getUid());
         if (walleto.isPresent()) {
