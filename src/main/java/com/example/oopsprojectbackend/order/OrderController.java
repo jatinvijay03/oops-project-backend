@@ -26,7 +26,7 @@ public class OrderController {
 
     @RequestMapping(path = "oops/api/order/user={uid}")
     @CrossOrigin("http://localhost:3000/")
-    public Optional<Order[]> getOrdersForDate(@PathVariable Long uid){return orderService.getOrdersForUid(uid);
+    public Optional<Order[]> getOrdersForUser(@PathVariable Long uid){return orderService.getOrdersForUid(uid);
     }
 
     @RequestMapping(path = "oops/api/order", method = RequestMethod.POST)
