@@ -23,6 +23,11 @@ public class OrderController {
     public Optional<Order[]> getOrdersForDate(@PathVariable LocalDate date){return orderService.getOrdersForDate(date);
     }
 
+    @RequestMapping(path = "oops/api/order/user={uid}")
+    @CrossOrigin("http://localhost:3000/")
+    public Optional<Order[]> getOrdersForDate(@PathVariable Long uid){return orderService.getOrdersForUid(uid);
+    }
+
     @RequestMapping(path = "oops/api/order", method = RequestMethod.POST)
     @CrossOrigin("http://localhost:3000/")
     public void registerNewOrders(@RequestBody Order[] orders) {

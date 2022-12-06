@@ -27,6 +27,10 @@ public class OrderService {
         return orderRepository.findByOrderDate(date);
     }
 
+    public Optional<Order[]> getOrdersForUid(Long uid){
+        return orderRepository.findByUid(uid);
+    }
+
 
     public void addNewOrders(Order[] orders) {
         for(int i = 0; i< orders.length; i++) {
