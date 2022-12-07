@@ -95,7 +95,7 @@ public class Order {
 
     @Override
     public String toString() {
-        return "CartItem{" +
+        return "Order{" +
                 "id=" + id +
                 "uid=" + uid +
                 "pid=" + pid +
