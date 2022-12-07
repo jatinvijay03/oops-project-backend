@@ -26,10 +26,12 @@ public class Product {
 
      private String showstatus;
 
+     private Integer stock;
+
     public Product() {
     }
 
-    public Product(Long id, String name, String description, String image, Integer price, Long category_id, String showstatus) {
+    public Product(Long id, String name, String description, String image, Integer price, Long category_id, String showstatus, Integer stock) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -37,15 +39,17 @@ public class Product {
         this.price = price;
         this.category_id = category_id;
         this.showstatus = showstatus;
+        this.stock = stock;
     }
 
-    public Product(String name, String description, String image, Integer price, Long category_id, String showstatus) {
+    public Product(String name, String description, String image, Integer price, Long category_id, String showstatus, Integer stock) {
         this.name = name;
         this.description = description;
         this.image = image;
         this.price = price;
         this.category_id = category_id;
         this.showstatus = showstatus;
+        this.stock = stock;
     }
 
     public Long getId() {
@@ -98,6 +102,12 @@ public class Product {
 
     public void setPrice(Integer price) {this.price = price;}
 
+    public Integer getStock() {
+        return stock;
+    }
+
+    public void setStock(Integer stock) {this.stock = stock;}
+
     @Override
     public String toString() {
         return "Product{" +
@@ -107,6 +117,7 @@ public class Product {
                 ", image=" + image + '\'' +
                 ", category_id=" + category_id + '\'' +
                 ", price=" + price +
+                ", stock=" + stock +
                 ", showstatus='" + showstatus + '\'' +
                 '}';
     }

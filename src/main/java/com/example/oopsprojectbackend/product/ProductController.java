@@ -44,6 +44,12 @@ public class ProductController {
         productService.addNewProducts(products);
     }
 
+    @RequestMapping(path = "oops/api/product/updatestock", method = RequestMethod.POST)
+    @CrossOrigin("http://localhost:3000/")
+    public void updateStock(@RequestBody Product product) {
+        productService.updateStock(product.getId(), product.getStock(), product.getName());
+    }
+
     @RequestMapping(path = "oops/api/product/delete", method = RequestMethod.DELETE)
     @CrossOrigin("http://localhost:3000/")
     public void deleteProduct(@RequestBody Product product) {

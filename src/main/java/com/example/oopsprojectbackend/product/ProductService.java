@@ -1,9 +1,11 @@
 package com.example.oopsprojectbackend.product;
 
 import com.example.oopsprojectbackend.cartItem.CartItem;
+import com.example.oopsprojectbackend.wallet.Wallet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,7 +46,23 @@ public class ProductService {
         }
     }
 
+    @Transactional
     public void deleteProduct(Long id){
-        productRepository.deleteById(id);
+        Optional<Product> prod = productRepository.findById(id);
+        prod.get().setShowstatus("false");
+    }
+
+    @Transactional
+    public Optional<Product> updateStock(Long id, Integer stock, String name){
+        Optional<Product> prod = productRepository.findById(id);
+        String n = "no";
+        if(name.equals(n)) {
+            System.out.println("hello");
+            throw new IllegalStateException("No");
+        }
+        else{
+            prod.get().setStock(stock);
+            return prod;
+        }
     }
 }
